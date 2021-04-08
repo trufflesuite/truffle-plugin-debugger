@@ -6,3 +6,4 @@ declare module '@truffle/debug-utils';
 declare module 'rc-tooltip';
 declare module "react-spinners/RingLoader";
 declare module 'react-router-dom';
+declare module 'web3';
