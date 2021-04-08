@@ -1,0 +1,10 @@
+body {
+  background-color: #F8F5F0;
+}
+
+.App-body {
+  background-color: #F8F5F0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}

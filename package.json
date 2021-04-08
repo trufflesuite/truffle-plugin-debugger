@@ -1,0 +1,18 @@
+{
+  "name": "truffle-plugin-debugger",
+  "version": "0.0.1",
+  "description": "",
+  "main": "debug.js",
+  "scripts": {
+    "start-dev": "cd ui && yarn start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "commands": {
+    "debug": "debug.js"
+  }
+}
