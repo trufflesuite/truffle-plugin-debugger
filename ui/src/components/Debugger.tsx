@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import axios from "axios";
 import styled from "styled-components";
 import H3 from "../styles/H3";
 import PrimaryButton from "../styles/PrimaryButton";
@@ -23,7 +24,8 @@ import {
   useParams
 } from "react-router-dom";
 
-import Sample from '../contracts/sample.json';
+// import Sample from '../contracts/SimpleStorage.json';
+// import NFT from '../contracts/NFT.json';
 
 const DebuggerWrapper = styled(List)`
   height: 90vh;
@@ -130,13 +132,10 @@ const Debugger = ({}) => {
 
   let { txHash } = useParams();
 
-
-
-  const providerUrl = "http://127.0.0.1:8545";
+  const providerUrl = "http://127.0.0.1:7545";
   const transaction: any = {
     hash: txHash
   };
-  const contracts = [Sample]
 
   const provider = Provider.create({
     url: providerUrl,
@@ -148,6 +147,9 @@ const Debugger = ({}) => {
     setReturnValue(null);
     setBreakpoints([]);
 
+    const res:any = await axios.get("http://127.0.0.1:54321/artifacts")
+    const contracts: any = res.data;
+
     const bugger = await TruffleDebugger.forTx(transaction.hash, {
       contracts,
       provider,
@@ -156,21 +158,28 @@ const Debugger = ({}) => {
     const initializedSession = bugger.connect();
     await initializedSession.ready();
 
-
     const sourcesInvolvedInTransaction = await getTransactionSourcesBeforeStarting(
       bugger
     );
+
+    console.log(sourcesInvolvedInTransaction)
+
+    // TODO - step through
+
     const sourceIndicesInvolvedInTransaction = sourcesInvolvedInTransaction.map(
       (source:any) => {
-        parseInt(source.id, 10)
+        parseInt(source.ast.id, 10)
       }
     );
 
+    const sources = contracts.filter((_: any, index: any) =>
+      sourceIndicesInvolvedInTransaction.includes(index)
+    )
+
+    console.log(sources);
+
     setSources(
-      [Sample]
-      // input.compilations[0].sources.filter((_: any, index: any) =>
-      //   sourceIndicesInvolvedInTransaction.includes(index)
-      // )
+      sources
     );
 
     setSession(initializedSession);
@@ -231,7 +240,6 @@ const Debugger = ({}) => {
       );
       setActiveLine(sourceRange.lines.start.line);
       setSelectedLine(sourceRange.lines.start.line);
-      console.log(sourceRange.lines.start.line)
     }
   };
 

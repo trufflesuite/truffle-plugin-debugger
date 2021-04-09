@@ -42,6 +42,7 @@ truffle run debug
 - [x] Transactions screen
 - [ ] Dynamically retrieve the artifacts (via Truffle DB)
 - [ ] Implement the settings screen (Ganache instance config, Infura settings, etc)
+- [ ] Fetch external (where do the contracts live)
 - [ ] Tidy up the README
 - [ ] Bundle
 - [ ] L2 support 🎉

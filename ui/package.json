@@ -16,6 +16,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
     "highlightjs-solidity": "^1.0.19",
     "lowlight": "^1.17.0",
     "rc-tooltip": "^3.7.3",
@@ -30,8 +31,8 @@
     "styled-components": "^5.2.3",
     "typescript": "^4.1.2",
     "unified": "^9.2.0",
-    "web3": "1.2.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "web3": "1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

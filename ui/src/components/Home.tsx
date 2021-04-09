@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as Colors from "../styles/colors";
 import H3 from "../styles/H3";
+import Transaction from "./Transaction";
 import getWeb3 from "../utils/getWeb3";
-
-
-import {
-  Link
-} from "react-router-dom";
 
 const HomeContainer = styled.div`
   padding: 1rem 2rem;
@@ -30,7 +26,7 @@ const Home = ({}) => {
         const txn = await web3.eth.getTransaction(txHash)
 
         const transaction: any = (
-          <li key={Date.now()}><Link to={`/${txn.hash}`}>{txn.hash}</Link></li>
+          <Transaction transaction={txn} key={Date.now()} />
         );
        
         await setTransactions((prev: any) => {
@@ -54,16 +50,14 @@ const Home = ({}) => {
   return (
     <HomeContainer>
       <H3>Transactions</H3>
-      <p>Transactions will be listed below as they are created...</p>
-      <ul>
+      <p>Transactions will be listed below as they are created.</p>
         {transactions.length ? 
           transactions.filter((v,i) => {
             if (i%2) {
-              return v; // uber hack to only display even (given the subscription returning dupes)
+              return v; // uber hack to only display even (given the subscription is returning dupes)
             }
           }) 
-        : (<li>Transactions will show here</li>) }
-      </ul>
+        : (<p>Transactions will show here</p>) }
     </HomeContainer>
   );
 };

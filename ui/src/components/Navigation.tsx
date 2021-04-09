@@ -32,7 +32,9 @@ const Navigation = ({}) => {
     <NavBarContainer>
       <NavBar>
         <li><span className="fa fa-bug" style={{color: Colors.MINT_400}} /></li>
+        <li><Link to="/accounts">Accounts</Link></li>
         <li><Link to="/">Transactions</Link></li>
+        <li><Link to="/">L1 ↔️ L2</Link></li>
         <li><Link to="/settings">Settings</Link></li>
       </NavBar>
     </NavBarContainer>

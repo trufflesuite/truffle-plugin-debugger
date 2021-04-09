@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Home from './components/Home';
 import Settings from './components/Settings';
+import Accounts from './components/Accounts';
 import Navigation from './components/Navigation';
 import Debugger from './components/Debugger';
 
@@ -20,6 +21,14 @@ function App() {
             <div className="App-body">
               <Navigation />
               <Home />
+            </div>
+          </div>
+        </Route>
+        <Route path="/accounts" exact>
+          <div className="App">
+            <div className="App-body">
+              <Navigation />
+              <Accounts />
             </div>
           </div>
         </Route>

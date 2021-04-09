@@ -15,7 +15,7 @@ const Settings = ({}) => {
   return (
     <SettingsContainer>
       <H3>Settings</H3>
-      <p>...</p>
+      <p>👋</p>
     </SettingsContainer>
   );
 };
