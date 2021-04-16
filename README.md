@@ -1,8 +1,8 @@
-# Truffle Debugger
+# Truffle Visual Debugger
 
 Debug all the things!
 
-> Note that it's hardcoded to port 7545, the ability to update the port (and / or pull it from config coming shortly).
+> Note that it's currently hardcoded to port 7545, the ability to update the port (and / or pull it from config coming shortly).
 
 ![screenshot](assets/screenshot.png)
 
@@ -24,7 +24,7 @@ plugins: [
 
 ## Usage
 
-To run the plugin, simple run the following command from the root of your Truffle project:
+To run the plugin, simply run the following command from the root of your project:
 
 ```
 truffle run debug <command>
@@ -49,6 +49,8 @@ If all goes well you should see the following output...
 Starting Visual Debugger...
 Started and listening at http://localhost:54321
 ```
+
+Open the [link](http://localhost:54321) and off you go!
 
 ## TODO
 
