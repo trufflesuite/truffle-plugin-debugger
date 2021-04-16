@@ -22,12 +22,12 @@ const Account = styled.div`
   padding: 0.2rem 0.2rem;
 `;
 
-const Accounts = ({}) => {
+const Accounts = ({port}: any) => {
   const [accounts, setAccounts] = useState<any[]>([]);
 
   const getAccounts = async () => {
 
-    const web3 = await getWeb3();
+    const web3 = await getWeb3(port);
     const list = (await web3.eth.getAccounts()).map((a: any, i: any) => {
       return (<Account>{`[${i}] ${a}`}</Account>)
     })

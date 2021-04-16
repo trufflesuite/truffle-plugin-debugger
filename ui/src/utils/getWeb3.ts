@@ -1,9 +1,9 @@
 import Web3 from "web3";
 
-const getWeb3 = async () => {
+const getWeb3 = async (port: any) => {
 
   const provider = new Web3.providers.WebsocketProvider(
-    "ws://127.0.0.1:7545",
+    `ws://127.0.0.1:${port}`,
     {
       headers: {
         Origin: "some_meaningful_name"

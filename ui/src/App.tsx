@@ -6,6 +6,8 @@ import Accounts from './components/Accounts';
 import Navigation from './components/Navigation';
 import Debugger from './components/Debugger';
 
+import { useState } from 'react';
+
 import {
   BrowserRouter,
   Switch,
@@ -13,6 +15,8 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const [port, setPort] = useState<number>(7545);
+
   return (
     <BrowserRouter basename="/debug">
       <Switch>
@@ -20,7 +24,7 @@ function App() {
           <div className="App">
             <div className="App-body">
               <Navigation />
-              <Home />
+              <Home port={port} />
             </div>
           </div>
         </Route>
@@ -28,7 +32,7 @@ function App() {
           <div className="App">
             <div className="App-body">
               <Navigation />
-              <Accounts />
+              <Accounts port={port} />
             </div>
           </div>
         </Route>
@@ -36,11 +40,11 @@ function App() {
           <div className="App">
             <div className="App-body">
               <Navigation />
-              <Settings />
+              <Settings port={port} setPort={setPort} />
             </div>
           </div>
         </Route>
-        <Route path="/:txHash">
+        <Route path="/:txHash/:port">
           <div className="App">
             <div className="App-body">
               <Navigation />

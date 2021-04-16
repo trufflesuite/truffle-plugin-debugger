@@ -9,12 +9,12 @@ const HomeContainer = styled.div`
   padding: 1rem 2rem;
 `;
 
-const Home = ({}) => {
+const Home = ({port}: any) => {
   const [transactions, setTransactions] = useState<any[]>([]);
 
   const getPendingTransactions = async () => {
 
-    const web3 = await getWeb3();
+    const web3 = await getWeb3(port);
     const subscription = web3.eth.subscribe('pendingTransactions');
 
     subscription.subscribe((error: any, result: any) => {
@@ -26,7 +26,7 @@ const Home = ({}) => {
         const txn = await web3.eth.getTransaction(txHash)
 
         const transaction: any = (
-          <Transaction transaction={txn} key={Date.now()} />
+          <Transaction transaction={txn} port={port} key={Date.now()} />
         );
        
         await setTransactions((prev: any) => {

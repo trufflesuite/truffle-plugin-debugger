@@ -2,6 +2,10 @@
 
 Debug all the things!
 
+> Note that it's hardcoded to port 7545, the ability to update the port (and / or pull it from config coming shortly).
+
+![screenshot](assets/screenshot.png)
+
 ## Installation
 
 Begin by adding to your Truffle project via the following:
@@ -28,21 +32,30 @@ truffle run debug <command>
 
 The list available commands is currently as follows:
 
-- [debug](#debug)
+- [start](#start)
 
-<a name="upload"></a>
+<a name="start"></a>
 ### `Start`
 
+The following starts the debugger...
+
 ```
-truffle run debug
+truffle run debug start
+```
+
+If all goes well you should see the following output...
+
+```
+Starting Visual Debugger...
+Started and listening at http://localhost:54321
 ```
 
 ## TODO
 
 - [x] Transactions screen
-- [ ] Dynamically retrieve the artifacts (via Truffle DB)
+- [x] Dynamically retrieve the artifacts (via Truffle DB)
 - [ ] Implement the settings screen (Ganache instance config, Infura settings, etc)
 - [ ] Fetch external (where do the contracts live)
 - [ ] Tidy up the README
-- [ ] Bundle
+- [x] Bundle
 - [ ] L2 support 🎉

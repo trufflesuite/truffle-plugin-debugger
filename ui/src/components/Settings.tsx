@@ -4,18 +4,19 @@ import * as Colors from "../styles/colors";
 import H3 from "../styles/H3";
 
 import {
-  Link
+  Link,
 } from "react-router-dom";
 
 const SettingsContainer = styled.div`
   padding: 1rem 2rem;
 `;
 
-const Settings = ({}) => {
+const Settings = ({port, setPort}: any) => {
   return (
     <SettingsContainer>
       <H3>Settings</H3>
-      <p>👋</p>
+      <p><strong>Port: </strong>{port}</p>
+      <p>Note that this is hardcoded for now, ability to choose port coming shortly.</p>
     </SettingsContainer>
   );
 };

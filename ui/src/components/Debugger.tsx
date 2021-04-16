@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from "axios";
 import styled from "styled-components";
+
 import H3 from "../styles/H3";
 import PrimaryButton from "../styles/PrimaryButton";
 import Sources from "./Sources";
@@ -15,6 +16,7 @@ import KeyboardShortcuts from "./KeyboardShortcuts";
 import List from "../styles/List";
 import * as Colors from "../styles/colors";
 import Loading from "../styles/Loading";
+
 import TruffleDebugger from "@truffle/debugger";
 import * as Codec from "@truffle/codec";
 import { getTransactionSourcesBeforeStarting } from "@truffle/debug-utils";
@@ -23,9 +25,6 @@ import Provider from "@truffle/provider";
 import {
   useParams
 } from "react-router-dom";
-
-// import Sample from '../contracts/SimpleStorage.json';
-// import NFT from '../contracts/NFT.json';
 
 const DebuggerWrapper = styled(List)`
   height: 90vh;
@@ -130,9 +129,9 @@ const Debugger = ({}) => {
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const [runningTabIndex, setRunningTabIndex] = useState<number>(0);
 
-  let { txHash } = useParams();
+  let { txHash, port } = useParams();
 
-  const providerUrl = "http://127.0.0.1:7545";
+  const providerUrl = `http://127.0.0.1:${port}`;
   const transaction: any = {
     hash: txHash
   };
@@ -148,11 +147,21 @@ const Debugger = ({}) => {
     setBreakpoints([]);
 
     const res:any = await axios.get("http://127.0.0.1:54321/artifacts")
-    const contracts: any = res.data;
+    const artifacts: any = res.data;
+
+    const input: {
+      compilations: Codec.Compilations.Compilation[];
+    } = {
+      compilations: [],
+    };
+
+    input.compilations = Codec.Compilations.Utils.shimArtifacts(
+      artifacts
+    );
 
     const bugger = await TruffleDebugger.forTx(transaction.hash, {
-      contracts,
       provider,
+      ...input
     });
 
     const initializedSession = bugger.connect();
@@ -162,21 +171,15 @@ const Debugger = ({}) => {
       bugger
     );
 
-    console.log(sourcesInvolvedInTransaction)
-
-    // TODO - step through
-
     const sourceIndicesInvolvedInTransaction = sourcesInvolvedInTransaction.map(
       (source:any) => {
-        parseInt(source.ast.id, 10)
+        return parseInt(source.id, 10)
       }
     );
 
-    const sources = contracts.filter((_: any, index: any) =>
-      sourceIndicesInvolvedInTransaction.includes(index)
-    )
-
-    console.log(sources);
+    const sources = input.compilations[0].sources.filter((_: any, index: any) => {
+      return sourceIndicesInvolvedInTransaction.includes(index)
+    })
 
     setSources(
       sources

@@ -56,7 +56,8 @@ const Tab = ({
   tabIsRunning,
 }: IProps) => {
   return (
-    <Tooltip placement="top" overlay={<span>{tabName}</span>}>
+    // <Tooltip placement="top" overlay={<span>{tabName}</span>}>
+    <>
       <TabButton
         onClick={() => setActiveTabIndex(index)}
         selected={activeTabIndex === index}
@@ -66,7 +67,8 @@ const Tab = ({
         {tabName}{" "}
         {tabIsRunning ? <ActiveIcon className="fas fa-dot-circle" /> : null}
       </TabButton>
-    </Tooltip>
+    </>
+    // </Tooltip>
   );
 };
 

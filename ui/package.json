@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@truffle/codec": "0.5.13",
+    "@truffle/compile-common": "0.3.10",
     "@truffle/debug-utils": "^4.2.2",
     "@truffle/debugger": "7.5.8",
     "@truffle/provider": "^0.2.9",

@@ -7,3 +7,4 @@ declare module 'rc-tooltip';
 declare module "react-spinners/RingLoader";
 declare module 'react-router-dom';
 declare module 'web3';
+declare module '@truffle/compile-common';

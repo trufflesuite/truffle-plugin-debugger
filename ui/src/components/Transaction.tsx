@@ -21,11 +21,11 @@ const TransactionWrapper = styled.div`
   }
 `;
 
-const Transaction = ({ transaction }: any) => {
+const Transaction = ({ transaction, port }: any) => {
 
   return (
     <TransactionWrapper>
-      <Link to={`/${transaction.hash}`}>
+      <Link to={`/${transaction.hash}/${port}`}>
         <strong>{`Block ${transaction.blockNumber}: `}</strong>
         {transaction.hash}
       </Link>
