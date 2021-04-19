@@ -16,6 +16,7 @@ import {
 
 function App() {
   const [port, setPort] = useState<number>(7545);
+  const [rpc, setRpc] = useState<string>('localhost');
 
   return (
     <BrowserRouter basename="/debug">
@@ -40,7 +41,7 @@ function App() {
           <div className="App">
             <div className="App-body">
               <Navigation />
-              <Settings port={port} setPort={setPort} />
+              <Settings port={port} setPort={setPort} rpc={rpc} setRpc={setRpc} />
             </div>
           </div>
         </Route>
