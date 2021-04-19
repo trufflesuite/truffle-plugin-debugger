@@ -52,12 +52,6 @@ Started and listening at http://localhost:54321
 
 Open the [link](http://localhost:54321) and off you go!
 
-## TODO
+## Support
 
-- [x] Transactions screen
-- [x] Dynamically retrieve the artifacts (via Truffle DB)
-- [ ] Implement the settings screen (Ganache instance config, Infura settings, etc)
-- [ ] Fetch external (where do the contracts live)
-- [ ] Tidy up the README
-- [x] Bundle
-- [ ] L2 support 🎉
+Support for this plugin is available via the Truffle community available [here](https://www.trufflesuite.com/community).
