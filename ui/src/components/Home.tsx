@@ -9,6 +9,15 @@ const HomeContainer = styled.div`
   padding: 1rem 2rem;
 `;
 
+const TransactionsBox = styled.div`
+  background: ${Colors.CHOCOLATE_200};
+  padding: 1rem;
+  border-radius: 1rem;
+  font-family: "Ubuntu Mono", monospace;
+  margin-bottom: 1.25rem;
+  font-size: 1em;
+`;
+
 const Home = ({port}: any) => {
   const [transactions, setTransactions] = useState<any[]>([]);
 
@@ -57,7 +66,7 @@ const Home = ({port}: any) => {
               return v; // uber hack to only display even (given the subscription is returning dupes)
             }
           }) 
-        : (<p>Transactions will show here</p>) }
+        : (<TransactionsBox>Waiting for transactions</TransactionsBox>) }
     </HomeContainer>
   );
 };
