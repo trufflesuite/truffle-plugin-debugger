@@ -2,8 +2,6 @@
 
 Debug all the things!
 
-> Note that it's currently hardcoded to port 7545, the ability to update the port (and / or pull it from config coming shortly).
-
 ![screenshot](assets/screenshot.png)
 
 ## Installation
